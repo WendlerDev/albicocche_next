@@ -1,12 +1,9 @@
+"use client"
 import Layout from "@/components/template/Layout";
 
-
-
-export default function Home() {
+export default function Notifications() {
   return (
     <Layout title="Notifications" subtitle="Notifications will be here">
-      <h3>Notification Content</h3>
-      
     </Layout>
   );
 }
