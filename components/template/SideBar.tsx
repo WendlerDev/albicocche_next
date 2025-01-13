@@ -1,8 +1,11 @@
+import useAuth from "@/data/hook/useAuth"
 import { HomeIcon, LogOutIcon, NotifIcon, SettingsIcon } from "../icons/icons"
 import Logo from "./Logo"
 import MenuItem from "./MenuItems"
 
 export default function SideBar() {
+
+    const {logout} = useAuth()
     return (
         <aside
             className={`
@@ -21,7 +24,7 @@ export default function SideBar() {
                     justify-center
                 `}
             >
-                <Logo />
+                <Logo src="/teste.svg" alt="Logo Albicocche" width={60} height={60} priority />
             </div>
             <ul className={`flex-grow`}>
                 <MenuItem url="/" text="Home" icon={HomeIcon} />
@@ -41,6 +44,7 @@ export default function SideBar() {
                     url=""
                     text="LogOut"
                     icon={LogOutIcon}
+                    onClick={logout}
                 />
             </ul>
         </aside>

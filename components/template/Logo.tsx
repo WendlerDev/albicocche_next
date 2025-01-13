@@ -1,13 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from 'next/image';
 
-export default function Logo() {
+interface Logo {
+    src:string
+    alt: string
+    width: any
+    height: any
+    priority: any
+}
+
+export default function Logo(props:Logo) {
     return (
         <div>
             <Image
-                src="/teste.svg"
-                alt="Logo Albicocche"
-                width={60}
-                height={60}
+                src={props.src}
+                alt={props.alt}
+                width={props.width}
+                height={props.height}
                 priority>
             </Image>
         </div>
