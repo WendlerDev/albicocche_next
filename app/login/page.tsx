@@ -7,7 +7,7 @@ import useAuth from "@/data/hook/useAuth";
 import { SetStateAction, useState } from "react";
 
 export default function Auth() {
-    const { loginGoogle} = useAuth()
+    const {loginGoogle} = useAuth() 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [authType, setAuthType] = useState<'login' | 'sign-up'>('login')
