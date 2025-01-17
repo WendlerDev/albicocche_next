@@ -1,15 +1,33 @@
+// const nextConfig = {
+//   async headers() {
+//     return [
+//       {
+//         source: "/(.*)",
+//         headers: [
+//           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+//           { key: "Cross-Origin-Embedder-Policy", value: "credentialless" },
+//         ],
+//       },
+//     ];
+//   },
+// };
+
+// module.exports = nextConfig;
+
 const nextConfig = {
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: [
-          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-          { key: "Cross-Origin-Embedder-Policy", value: "credentialless" },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin-allow-popups",
+          },
         ],
       },
     ];
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

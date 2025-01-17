@@ -18,20 +18,14 @@ export default function Layout(props: LayoutProps) {
   const { user, loading } = useAuth(); // Obtém informações do usuário a partir do contexto
   const router = useRouter();
 
-  useEffect(() => {
-    // Redireciona para a página de login se o usuário não estiver autenticado
-    if (!loading && !user) {
-      router.push("/login");
-    }
-  }, [loading, user, router]); // Adiciona as dependências ao useEffect
+  // useEffect(() => {
+  //   // Redireciona para a página de login se o usuário não estiver autenticado
+  //   if (!loading && !user) {
+  //     router.push("/login");
+  //   }
+  // }, []); // Adiciona as dependências ao useEffect
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p>Loading...</p>
-      </div>
-    );
-  }
+
 
   return (
     <div className={`${theme} flex h-screen w-screen`}>
