@@ -132,8 +132,8 @@ interface AuthContextProps {
 
 const AuthContext = createContext<AuthContextProps>({
   user: null,
-  loginGoogle: async () => { },
-  logout: async () => { },
+  loginGoogle: async () => {},
+  logout: async () => {},
 });
 
 async function mapUserToUserModel(userFirebase: any): Promise<User> {
@@ -174,19 +174,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function loginGoogle() {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: "select_account",
+    });
+
     try {
-        console.log("Tentando fazer login com Google...");
-        const result = await signInWithPopup(auth, provider);
-        console.log("Usuário logado:", result.user);
+      console.log("Tentando fazer login com Google...");
+      const result = await signInWithPopup(auth, provider);
+      console.log("Usuário logado:", result.user);
     } catch (error: any) {
-        console.error("Erro ao tentar fazer login:", error);
-        if (error.code === 'auth/popup-closed-by-user') {
-            alert("Você cancelou o login. Tente novamente.");
-        } else {
-            alert("Erro ao fazer login. Tente novamente.");
-        }
+      console.error("Erro ao tentar fazer login:", error);
+      if (error.code === "auth/popup-closed-by-user") {
+        alert("Você cancelou o login. Tente novamente.");
+      } else {
+        alert("Erro ao fazer login. Tente novamente.");
+      }
     }
-}
+  }
 
   async function logout() {
     try {
@@ -214,4 +218,3 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 }
 
 export default AuthContext;
-
